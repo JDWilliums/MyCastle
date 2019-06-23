@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private bool atCastle = false;
 
     GameObject castle;
+    GameObject [] projectile;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Move();
+        projectile = GameObject.FindGameObjectsWithTag("Projectile");
     }
 
     private void Move()
@@ -40,6 +42,10 @@ public class Enemy : MonoBehaviour
         {
             atCastle = true;
             StartCoroutine(Attack());
+        } else if (other.gameObject.tag == "Projectile")
+        {
+            health -= projectile[0].gameObject.GetComponent<ProjectileSpawner>().contactDamage;
+            Damaged();
         }
 
     }
@@ -52,6 +58,13 @@ public class Enemy : MonoBehaviour
             Castle.health -= damage;
             castle.GetComponent<Castle>().Damaged();
             Debug.Log("attacked");
+        }
+    }
+    void Damaged()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
