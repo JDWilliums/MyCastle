@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
-    public static float health = 100;
+    public static float health = 10000;
     public static float maxHealth = 100;
     public bool isDead = false;
     public static float healthNormalized = health / maxHealth;

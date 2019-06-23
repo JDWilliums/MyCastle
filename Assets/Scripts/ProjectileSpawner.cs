@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectiles : MonoBehaviour
+public class ProjectileSpawner : MonoBehaviour
 {
     public float contactDamage = 10f;
     public float hitTime = 1f;
@@ -13,7 +13,6 @@ public class Projectiles : MonoBehaviour
 
     private void Start()
     {
-        Launch();
     }
 
     void Launch()
@@ -34,10 +33,23 @@ public class Projectiles : MonoBehaviour
         xVelo = totalVelo * Mathf.Cos(launchAngle);
         yVelo = totalVelo * Mathf.Sin(launchAngle);
 
-        GameObject projectileInst = Instantiate(projectile, launchFromPoint.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+        
+
+        GameObject projectileInst = Instantiate(projectile, launchFromPoint.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         Rigidbody2D rigid;
         rigid = projectileInst.GetComponent<Rigidbody2D>();
+        Debug.Log("shooting");
 
         rigid.velocity = new Vector2(xVelo, yVelo);
+
+
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Launch();
+        }
+        
     }
 }

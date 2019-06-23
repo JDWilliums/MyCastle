@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed = 10;
     public float damage = 10;
     public float attackSpeed = 1;
+    public float health = 10;
     private bool atCastle = false;
 
     GameObject castle;
