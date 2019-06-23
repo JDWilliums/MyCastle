@@ -13,7 +13,7 @@ public class Castle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthBar.SetSize(healthNormalized);
+        // healthBar.SetSize(healthNormalized);
     }
 
     // Update is called once per frame
