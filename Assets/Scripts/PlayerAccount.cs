@@ -6,6 +6,7 @@ public class PlayerAccount : MonoBehaviour
 {
     public float gold = 0;
     public float food = 0;
+    public float stone = 0;
     public float armyCapacity;
 
     public float farm1 = 0;
@@ -37,7 +38,7 @@ public class PlayerAccount : MonoBehaviour
     public float goldps; // gold per second
     public float foodps; // food per second
     public float barracksTimeConstant; //A constant that changes the training time of troops, can be changed with researching through libraries.
-
+    public float stoneps;
 
     public float numBrawler;
     public float numInfantry;
@@ -51,7 +52,8 @@ public class PlayerAccount : MonoBehaviour
     {
         goldps = shop1 * 1f + shop2 * 5f + shop3 * 25f;
         foodps = farm1 * 2f + farm2 * 10f + farm3 * 50f;
-        barracksTimeConstant = library1 * 0.1f + library2 * 0.3f + library3 * 0.7f;  
+        barracksTimeConstant = library1 * 0.1f + library2 * 0.3f + library3 * 0.7f;
+        stoneps = quarry1 * 1f + quarry2 * 10f + quarry3 * 100f;
     }
 
     private void Start()
@@ -70,7 +72,7 @@ public class PlayerAccount : MonoBehaviour
         while(true) { 
             gold += goldps;
             food += foodps;
-            Debug.Log(barracksTimeConstant);
+            stone += stoneps;
 
             yield return new WaitForSeconds(1f);
         }
