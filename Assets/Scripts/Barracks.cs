@@ -13,7 +13,7 @@ public class Barracks : MonoBehaviour
     GameObject medic; // 6
     GameObject gamemaster;
 
-    private float trainTimeConstant;
+    public float trainTimeConstant;
 
     public float trainTime;
 
@@ -24,21 +24,58 @@ public class Barracks : MonoBehaviour
     private void Start()
     {
         gamemaster = GameObject.FindGameObjectWithTag("GM");
+        
         TrainingQueue(trainingQ);
+    }
+    private void Update()
+    {
+        trainTimeConstant = gamemaster.GetComponent<PlayerAccount>().barracksTimeConstant;
     }
 
     void TrainingQueue(List<int> trainingQ)
     {
-        trainTimeConstant = gamemaster.GetComponent<PlayerAccount>().barracksTimeConstant;
 
+        trainTimeConstant = gamemaster.GetComponent<PlayerAccount>().barracksTimeConstant;
         StartCoroutine(Train());
+
+        for (int j = 0; j < trainingQ.Count; j++) // for loop for estimated time for queue
+        {
+            if (trainingQ[j] == 0)
+            {
+                totalTime += 30f;
+            } else if (trainingQ[j] == 1)
+            {
+                totalTime += 90f;
+            }
+            else if (trainingQ[j] == 2)
+            {
+                totalTime += 60f;
+            }
+            else if (trainingQ[j] == 3)
+            {
+                totalTime += 150f;
+            }
+            else if (trainingQ[j] == 4)
+            {
+                totalTime += 180f;
+            }
+            else if (trainingQ[j] == 5)
+            {
+                totalTime += 300f;
+            }
+            else if (trainingQ[j] == 6)
+            {
+                totalTime += 120f;
+            }
+        }
+        totalTime = totalTime / (1 + trainTimeConstant);
 
         IEnumerator Train() {
             for (int i = 0; i < trainingQ.Count; i++)
             {
                 if (trainingQ[i] == 0)
                 {
-                    trainTime = 30f / (1f + trainTimeConstant);
+                    trainTime = (30f / (1f + trainTimeConstant));
                     yield return new WaitForSeconds(trainTime);
                     gamemaster.GetComponent<PlayerAccount>().numBrawler += 1;
                     Debug.Log("added brawler");
