@@ -8,6 +8,11 @@ public class PlayerAccount : MonoBehaviour
     public float food = 0;
     public float stone = 0;
     public float armyCapacity;
+    public float armyCount;
+
+    public float house1 = 0;
+    public float house2 = 0;
+    public float house3 = 0;
 
     public float farm1 = 0;
     public float farm2 = 0;
@@ -54,6 +59,8 @@ public class PlayerAccount : MonoBehaviour
         foodps = farm1 * 2f + farm2 * 10f + farm3 * 50f;
         barracksTimeConstant = library1 * 0.1f + library2 * 0.3f + library3 * 0.7f;
         stoneps = quarry1 * 1f + quarry2 * 10f + quarry3 * 100f;
+        armyCapacity = 25f + house1 * 5f + house2 * 10f + house3 * 20f;
+        armyCount = numBrawler * 5 + numInfantry * 5 + numArcher * 3 + numCavalry * 3 + numKnight * 2 + numCaptain * 1 + numMedic * 2; // add when queued to check
     }
 
     private void Start()
