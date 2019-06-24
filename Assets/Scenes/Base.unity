@@ -120,6 +120,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1078978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078980}
+  - component: {fileID: 1078979}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: GM
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1078979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f924f5f8544930e4db2d7dcff6209ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 0
+  food: 0
+  stone: 0
+  electronics: 0
+  armyCapacity: 0
+  armyCount: 0
+  house1: 0
+  house2: 0
+  house3: 0
+  farm1: 0
+  farm2: 0
+  farm3: 0
+  quarry1: 0
+  quarry2: 0
+  quarry3: 0
+  factory1: 0
+  factory2: 0
+  factory3: 0
+  barracks1: 0
+  barracks2: 0
+  barracks3: 0
+  library1: 0
+  library2: 0
+  library3: 0
+  shop1: 0
+  shop2: 0
+  shop3: 0
+  castleLevel: 0
+  waveLevel: 0
+  goldps: 0
+  foodps: 0
+  barracksTimeConstant: 0
+  stoneps: 0
+  electronicsps: 0
+  numBrawler: 0
+  numInfantry: 0
+  numArcher: 0
+  numCavalry: 0
+  numKnight: 0
+  numCaptain: 0
+  numMedic: 0
+--- !u!4 &1078980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.71171826, y: -0.867342, z: -72.909996}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1478690267
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,4 +286,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1978152052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978152054}
+  - component: {fileID: 1978152053}
+  m_Layer: 0
+  m_Name: Barrack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1978152053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978152052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3580fb4c15a4b4090d4a0379239afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trainTimeConstant: 7.7
+  trainTime: 0
+  totalTime: 0
+--- !u!4 &1978152054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978152052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07540971, y: -0.60532546, z: -72.9797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

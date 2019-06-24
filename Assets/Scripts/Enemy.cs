@@ -57,10 +57,9 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(attackSpeed);
             Castle.health -= damage;
             castle.GetComponent<Castle>().Damaged();
-            Debug.Log("attacked");
         }
     }
-    void Damaged()
+    public void Damaged()
     {
         if (health <= 0)
         {

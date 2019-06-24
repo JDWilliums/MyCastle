@@ -8,6 +8,8 @@ TagManager:
   - WaveSpawner
   - Enemy
   - Projectile
+  - GM
+  - Ally
   layers:
   - Default
   - TransparentFX
