@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerAccount : MonoBehaviour
 {
+    // Resources and buildings
     public float gold = 0;
     public float food = 0;
     public float stone = 0;
+    public float electronics;
     public float armyCapacity;
     public float armyCount;
 
@@ -38,13 +40,17 @@ public class PlayerAccount : MonoBehaviour
     public float shop2 = 0;
     public float shop3 = 0;
 
+    // Statistics
     public float castleLevel = 0;
+    public float waveLevel = 0;
 
     public float goldps; // gold per second
     public float foodps; // food per second
     public float barracksTimeConstant; //A constant that changes the training time of troops, can be changed with researching through libraries.
     public float stoneps;
+    public float electronicsps;
 
+    // Troops
     public float numBrawler;
     public float numInfantry;
     public float numArcher;
@@ -57,6 +63,7 @@ public class PlayerAccount : MonoBehaviour
     {
         goldps = shop1 * 1f + shop2 * 5f + shop3 * 25f;
         foodps = farm1 * 2f + farm2 * 10f + farm3 * 50f;
+        electronicsps = factory1 * 0.2f + factory2 * 0.5f + factory3 * 1f;
         barracksTimeConstant = library1 * 0.1f + library2 * 0.3f + library3 * 0.7f;
         stoneps = quarry1 * 1f + quarry2 * 10f + quarry3 * 100f;
         armyCapacity = 25f + house1 * 5f + house2 * 10f + house3 * 20f;
@@ -80,7 +87,7 @@ public class PlayerAccount : MonoBehaviour
             gold += goldps;
             food += foodps;
             stone += stoneps;
-
+            electronics += electronicsps;
             yield return new WaitForSeconds(1f);
         }
         
