@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8382632757490060642}
   - component: {fileID: 8382632757490060646}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,8 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb290a2f1ed5654cb560f6ac29199f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   damage: 10
+  attackSpeed: 1
+  health: 10
+  isDead: 0
+  myCollider: {fileID: 0}
 --- !u!50 &8382632757490060646
 Rigidbody2D:
   serializedVersion: 4

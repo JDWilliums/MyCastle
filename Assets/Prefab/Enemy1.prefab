@@ -121,10 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb290a2f1ed5654cb560f6ac29199f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 0.5
   damage: 20
   attackSpeed: 1
   health: 20
+  isDead: 0
+  myCollider: {fileID: 0}
 --- !u!50 &5377770268890960661
 Rigidbody2D:
   serializedVersion: 4

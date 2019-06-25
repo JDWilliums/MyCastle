@@ -10,14 +10,21 @@ public class Enemy : MonoBehaviour
     public float attackSpeed = 1;
     public float health = 10;
     private bool atCastle = false;
+    private bool atAlly = false;
+    public bool isDead = false;
+
+    private 
 
     GameObject castle;
     GameObject [] projectile;
+    GameObject [] ally;
+    public Collider2D myCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         castle = GameObject.FindGameObjectWithTag("Castle");
+        myCollider = gameObject.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -25,11 +32,12 @@ public class Enemy : MonoBehaviour
     {
         Move();
         projectile = GameObject.FindGameObjectsWithTag("Projectile");
+        ally = GameObject.FindGameObjectsWithTag("Ally");
     }
 
     private void Move()
     {
-        if (atCastle == false)
+        if (atCastle == false && atAlly == false)
         {
             // Moves enemy left by speed given at all different frame rates
             transform.position += Vector3.left * speed * Time.deltaTime;
@@ -41,16 +49,20 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Castle")
         {
             atCastle = true;
-            StartCoroutine(Attack());
+            StartCoroutine(AttackCastle());
         } else if (other.gameObject.tag == "Projectile")
         {
-            health -= projectile[0].gameObject.GetComponent<ProjectileSpawner>().contactDamage;
+            health -= other.GetComponent<ProjectileSpawner>().contactDamage;
             Damaged();
+        } else if (other.gameObject.tag == "Ally")
+        {
+            atAlly = true;
+            StartCoroutine(AttackAlly(other));
         }
 
     }
 
-    private IEnumerator Attack()
+    private IEnumerator AttackCastle()
     {
         while(true)
         {
@@ -59,11 +71,36 @@ public class Enemy : MonoBehaviour
             castle.GetComponent<Castle>().Damaged();
         }
     }
+    private IEnumerator AttackAlly(Collider2D collision)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(attackSpeed);
+            if (isDead == false && collision.GetComponent<Ally>().isDead == false && atAlly == true)
+            {
+                collision.gameObject.GetComponent<Ally>().health -= damage;
+                collision.gameObject.GetComponent<Ally>().Damaged();
+            } else
+            {
+                atAlly = false;
+            }
+            
+
+        }
+    }
     public void Damaged()
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
+            isDead = true;
+            myCollider.enabled = false;
+            StartCoroutine(Dying());
         }
+    }
+
+    IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }

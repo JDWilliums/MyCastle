@@ -9,9 +9,15 @@ public class Ally : MonoBehaviour
     public float attackSpeed = 1;
     public float damage = 10;
     private bool atEnemy = false;
+    public bool isDead = false;
 
     GameObject [] enemy;
+    public Collider2D myCollider;
 
+    private void Start()
+    {
+        myCollider = gameObject.GetComponent<Collider2D>();
+    }
 
     private void Update()
     {
@@ -42,16 +48,29 @@ public class Ally : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(attackSpeed);
-            collision.gameObject.GetComponent<Enemy>().health -= damage;
-            collision.gameObject.GetComponent<Enemy>().Damaged();
-            Debug.Log("attacked");
+            if (collision.gameObject.GetComponent<Enemy>().isDead == false && isDead == false && atEnemy == true)
+            {
+                collision.gameObject.GetComponent<Enemy>().health -= damage;
+                collision.gameObject.GetComponent<Enemy>().Damaged();
+                Debug.Log("attacked");
+            } else
+            {
+                atEnemy = false;
+            }
         }
     }
     public void Damaged()
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
+            isDead = true;
+            myCollider.enabled = false;
+            StartCoroutine(Dying());
         }
+    }
+    IEnumerator Dying()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }
