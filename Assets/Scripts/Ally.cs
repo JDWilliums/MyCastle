@@ -70,7 +70,8 @@ public class Ally : MonoBehaviour
     }
     IEnumerator Dying()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
+        
     }
 }
