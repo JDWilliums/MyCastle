@@ -52,7 +52,8 @@ public class Enemy : MonoBehaviour
             StartCoroutine(AttackCastle());
         } else if (other.gameObject.tag == "Projectile")
         {
-            health -= other.GetComponent<ProjectileSpawner>().contactDamage;
+            health -= other.GetComponent<Projectile>().damage;
+            other.GetComponent<Projectile>().OnHit();
             Damaged();
         } else if (other.gameObject.tag == "Ally")
         {

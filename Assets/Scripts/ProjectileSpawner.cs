@@ -6,6 +6,7 @@ public class ProjectileSpawner : MonoBehaviour
 {
     public float contactDamage = 10f;
     public float hitTime = 1f;
+    public bool canShoot = true;
 
     public Transform launchFromPoint;
     public Transform target;
@@ -13,6 +14,7 @@ public class ProjectileSpawner : MonoBehaviour
 
     private void Start()
     {
+        
     }
 
     void Launch()
@@ -46,10 +48,22 @@ public class ProjectileSpawner : MonoBehaviour
     }
     private void Update()
     {
+        StartCoroutine(AttackSpeed(projectile.GetComponent<Projectile>().attackSpeed));
+    }
+
+    public IEnumerator AttackSpeed(float attSpd)
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            Launch();
+            if (canShoot == true)
+            {
+                Launch();
+                canShoot = false;
+                yield return new WaitForSeconds(attSpd);
+                canShoot = true;
+            }
         }
-        
+
     }
+        
 }
