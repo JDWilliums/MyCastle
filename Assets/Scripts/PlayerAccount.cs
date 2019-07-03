@@ -59,6 +59,9 @@ public class PlayerAccount : MonoBehaviour
     public float numCaptain;
     public float numMedic;
 
+    // Building array
+    public int[] buildingArray1 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+
     private void Update()
     {
         goldps = shop1 * 1f + shop2 * 5f + shop3 * 25f;
