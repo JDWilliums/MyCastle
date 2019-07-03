@@ -9,11 +9,29 @@ public class BuildablePlaces : MonoBehaviour
     public int code;
 
     public GameObject GameMaster;
+    private void Start()
+    {
+        //
+    }
     private void OnMouseDown()
     {
-        pos = gameObject.transform.position;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        GameMaster.GetComponent<BaseBuilding>().InstantiatingBuilding(code,pos);
+        if (GameMaster.GetComponent<BaseBuilding>().selected != 0)
+        {
+            pos = gameObject.transform.position;
+
+            // Right so, the reason why i did this was to differentiate the building places being used
+            // to building places not used. When i close the building tab this was undifferentiatable
+            // so i basically did the same thing to the used places just differently so they dont get changed
+            // within the code in basebuilding.cs 
+            var tempColor = gameObject.GetComponent<SpriteRenderer>().color;
+            tempColor.a = 0f;
+            gameObject.GetComponent<SpriteRenderer>().color = tempColor;
+
+            var tempSize = gameObject.GetComponent<BoxCollider2D>().size;
+            tempSize = new Vector3(0, 0);
+            gameObject.GetComponent<BoxCollider2D>().size = tempSize;
+
+            GameMaster.GetComponent<BaseBuilding>().InstantiatingBuilding(code, pos);
+        }
     }
 }

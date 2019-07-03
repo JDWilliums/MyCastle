@@ -102,12 +102,14 @@ public class BaseUI : MonoBehaviour
             {
                 child.GetComponent<SpriteRenderer>().enabled = true;
                 child.GetComponent<BoxCollider2D>().enabled = true;
+                
             }
         } else
         {
             buildTab = false;
             line.GetComponent<Text>().enabled = false;
             tab.GetComponent<Image>().enabled = false;
+            gameObject.GetComponent<BaseBuilding>().selected = 0;
 
             foreach (Transform child in build.transform)
             {
