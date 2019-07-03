@@ -101,6 +101,7 @@ public class BaseUI : MonoBehaviour
             foreach (Transform child in positions.transform)
             {
                 child.GetComponent<SpriteRenderer>().enabled = true;
+                child.GetComponent<BoxCollider2D>().enabled = true;
             }
         } else
         {
@@ -121,6 +122,7 @@ public class BaseUI : MonoBehaviour
             foreach (Transform child in positions.transform)
             {
                 child.GetComponent<SpriteRenderer>().enabled = false;
+                child.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
     }

@@ -13,6 +13,7 @@ public class BuildablePlaces : MonoBehaviour
     {
         pos = gameObject.transform.position;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         GameMaster.GetComponent<BaseBuilding>().InstantiatingBuilding(code,pos);
     }
 }

@@ -32,7 +32,7 @@ public class BaseBuilding : MonoBehaviour
 
     public void InstantiatingBuilding(int placeCode, Vector3 pos)
     {
-        pos = pos + new Vector3 (0, 0, -1);
+        pos = pos + new Vector3 (0, 0, -1); //this just sets it in front of background
         if (selected == 1)
         {
             Instantiate(House, pos, rot);
