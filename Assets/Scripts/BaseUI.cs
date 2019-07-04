@@ -7,8 +7,11 @@ public class BaseUI : MonoBehaviour
 {
     public Text statsGPS;
     public Text statsFPS;
-    public Text statsAC;
+    public Text statsACap;
     public Text statsTR;
+    public Text statsSPS;
+    public Text statsEPS;
+    public Text statsACount;
 
     private bool statsTab = true; // Actually false just easier to call statsbutton to turn in false
     private bool buildTab = true;
@@ -21,6 +24,8 @@ public class BaseUI : MonoBehaviour
     public GameObject positions;
     public GameObject line;
 
+    private float timePercentageReduction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +36,18 @@ public class BaseUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timePercentageReduction = GetComponent<PlayerAccount>().barracksTimeConstant * 10;
         if (statsTab)
         {
             statsGPS.text = GetComponent<PlayerAccount>().goldps.ToString();
             statsFPS.text = GetComponent<PlayerAccount>().foodps.ToString();
-            statsAC.text = GetComponent<PlayerAccount>().armyCapacity.ToString();
-            statsTR.text = GetComponent<PlayerAccount>().barracksTimeConstant.ToString(); // needs to change to percentage
-            // Add army count or army = army count / army capacity
+            statsACap.text = GetComponent<PlayerAccount>().armyCapacity.ToString();
+            statsTR.text = timePercentageReduction.ToString();
+            statsSPS.text = GetComponent<PlayerAccount>().stoneps.ToString();
+            statsEPS.text = GetComponent<PlayerAccount>().electronicsps.ToString();
+            statsACount.text = GetComponent<PlayerAccount>().armyCount.ToString();
+            // needs to change to percentage
+            
         }
 
     }

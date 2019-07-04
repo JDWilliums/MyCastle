@@ -36,21 +36,27 @@ public class BaseBuilding : MonoBehaviour
         if (selected == 1)
         {
             Instantiate(House, pos, rot);
+            gameObject.GetComponent<PlayerAccount>().house1++;
         } else if (selected == 2)
         {
             Instantiate(Barracks, pos, rot);
+            gameObject.GetComponent<PlayerAccount>().barracks1++;
         } else if (selected == 3)
         {
             Instantiate(Farm, pos, rot);
+            gameObject.GetComponent<PlayerAccount>().farm1++;
         } else if (selected == 4)
         {
             Instantiate(Shop, pos, rot);
+            gameObject.GetComponent<PlayerAccount>().shop1++;
         } else if (selected == 5)
         {
             Instantiate(Library, pos, rot);
+            gameObject.GetComponent<PlayerAccount>().library1++;
         } else if (selected == 6)
         {
             Instantiate(Factory, pos, rot);
+            gameObject.GetComponent<PlayerAccount>().factory1++;
         }
     }
 }
