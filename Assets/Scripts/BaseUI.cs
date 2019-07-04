@@ -16,6 +16,7 @@ public class BaseUI : MonoBehaviour
     private bool statsTab = true; // Actually false just easier to call statsbutton to turn in false
     private bool buildTab = true;
     private bool upgradeTab = false;
+    private bool buildingInterface = true;
 
     public GameObject tab;
     public GameObject stats;
@@ -136,6 +137,23 @@ public class BaseUI : MonoBehaviour
                 child.GetComponent<SpriteRenderer>().enabled = false;
                 child.GetComponent<BoxCollider2D>().enabled = false;
             }
+        }
+    }
+
+    public void BuildingInterface()
+    {
+        if (buildingInterface == true)
+        {
+            buildingInterface = false;
+            tab.GetComponent<Image>().enabled = false;
+            line.GetComponent<Image>().enabled = false;
+
+        } else
+        {
+            buildingInterface = true;
+            tab.GetComponent<Image>().enabled = true;
+            line.GetComponent<Image>().enabled = false;
+
         }
     }
 }

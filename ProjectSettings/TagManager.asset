@@ -10,6 +10,27 @@ TagManager:
   - Projectile
   - GM
   - Ally
+  - House1
+  - House2
+  - House3
+  - Barracks1
+  - Barracks2
+  - Barracks3
+  - Farm1
+  - Farm2
+  - Farm3
+  - Shop1
+  - Shop2
+  - Shop3
+  - Library1
+  - Library2
+  - Library3
+  - Factory1
+  - Factory2
+  - Factory3
+  - Mine1
+  - Mine2
+  - Mine3
   layers:
   - Default
   - TransparentFX
