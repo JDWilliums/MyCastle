@@ -16,7 +16,7 @@ public class BaseUI : MonoBehaviour
     private bool statsTab = true; // Actually false just easier to call statsbutton to turn in false
     private bool buildTab = true;
     private bool upgradeTab = false;
-    private bool buildingInterface = true;
+    public bool buildingInterface = true;
 
     public GameObject tab;
     public GameObject stats;
@@ -24,6 +24,8 @@ public class BaseUI : MonoBehaviour
     public GameObject buildButtons;
     public GameObject positions;
     public GameObject line;
+    public GameObject upgrade;
+    public GameObject demolish;
 
     private float timePercentageReduction;
 
@@ -32,6 +34,7 @@ public class BaseUI : MonoBehaviour
     {
         StatsButton();
         BuildButton();
+        BuildingInterface();
     }
 
     // Update is called once per frame
@@ -142,18 +145,12 @@ public class BaseUI : MonoBehaviour
 
     public void BuildingInterface()
     {
-        if (buildingInterface == true)
-        {
-            buildingInterface = false;
-            tab.GetComponent<Image>().enabled = false;
-            line.GetComponent<Image>().enabled = false;
 
-        } else
-        {
-            buildingInterface = true;
-            tab.GetComponent<Image>().enabled = true;
-            line.GetComponent<Image>().enabled = false;
+        buildingInterface = false;
+        tab.GetComponent<Image>().enabled = false;
+        line.GetComponent<Text>().enabled = false;
+        upgrade.GetComponent<Image>().enabled = false;
+        demolish.GetComponent<Image>().enabled = false;
 
-        }
     }
 }

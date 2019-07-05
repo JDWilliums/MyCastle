@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d16cfa0754c8b474f9b8a9b2b68b6577
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GameMaster: {instanceID: 0}
+  - Description: {fileID: 2004720869399885114, guid: 9855719d12a5cf544b52548d72956611,
+      type: 3}
+  - Level: {fileID: 2661837864026735650, guid: 8eb71757a609de24eb5226e4913fa645, type: 3}
+  - LevelText: {fileID: 9134244731990089905, guid: fa79dc783fef34644b5833383e262ce9,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

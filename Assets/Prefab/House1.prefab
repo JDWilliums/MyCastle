@@ -121,6 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMaster: {fileID: 0}
-  Description: {fileID: 0}
-  Level: {fileID: 0}
-  Sprite: {fileID: 0}
+  tabOpen: 0

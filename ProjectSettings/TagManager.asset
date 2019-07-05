@@ -31,6 +31,30 @@ TagManager:
   - Mine1
   - Mine2
   - Mine3
+  - House1tab
+  - House2tab
+  - House3tab
+  - Barracks1tab
+  - Barracks2tab
+  - Barracks3tab
+  - Farm1tab
+  - Farm2tab
+  - Farm3tab
+  - Shop1tab
+  - Shop2tab
+  - Shop3tab
+  - Library1tab
+  - Library2tab
+  - Library3tab
+  - Factory1tab
+  - Factory2tab
+  - Factory3tab
+  - Mine1tab
+  - Mine2tab
+  - Mine3tab
+  - Texttab
+  - Descriptiontab
+  - Leveltab
   layers:
   - Default
   - TransparentFX
