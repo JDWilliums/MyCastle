@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BuildingInterface : MonoBehaviour
 {
     public GameObject GameMaster;
-    public bool tabOpen = false;
+    public bool tabOpen;
 
     GameObject Description;
     GameObject Level;
@@ -23,10 +23,8 @@ public class BuildingInterface : MonoBehaviour
     GameObject Library1Sprite;
     GameObject Factory1Sprite;
 
-
-    private void Start()
+    public void Start()
     {
-
         GameMaster = GameObject.FindGameObjectWithTag("GM");
 
         Description = GameObject.FindGameObjectWithTag("Descriptiontab");
@@ -34,47 +32,32 @@ public class BuildingInterface : MonoBehaviour
         LevelText = GameObject.FindGameObjectWithTag("Texttab");
 
         House1Sprite = GameObject.FindGameObjectWithTag("House1tab");
-        House1Sprite.GetComponent<Image>().enabled = false;
         House2Sprite = GameObject.FindGameObjectWithTag("House2tab");
-        House2Sprite.GetComponent<Image>().enabled = false;
-        //h3
         Barrack1Sprite = GameObject.FindGameObjectWithTag("Barracks1tab");
-        Barrack1Sprite.GetComponent<Image>().enabled = false;
         Barrack2Sprite = GameObject.FindGameObjectWithTag("Barracks2tab");
-        Barrack2Sprite.GetComponent<Image>().enabled = false;
         //b3
         Farm1Sprite = GameObject.FindGameObjectWithTag("Farm1tab");
-        Farm1Sprite.GetComponent<Image>().enabled = false;
         Farm2Sprite = GameObject.FindGameObjectWithTag("Farm2tab");
-        Farm2Sprite.GetComponent<Image>().enabled = false;
         //f3
         Shop1Sprite = GameObject.FindGameObjectWithTag("Shop1tab");
-        Shop1Sprite.GetComponent<Image>().enabled = false;
         Shop2Sprite = GameObject.FindGameObjectWithTag("Shop2tab");
-        Shop2Sprite.GetComponent<Image>().enabled = false;
         //s3
         Library1Sprite = GameObject.FindGameObjectWithTag("Library1tab");
-        Library1Sprite.GetComponent<Image>().enabled = false;
         //l2
         //l3
         Factory1Sprite = GameObject.FindGameObjectWithTag("Factory1tab");
-        Factory1Sprite.GetComponent<Image>().enabled = false;
         //f2
         //f3
-        //mines123 // tabs need to be added too
-
-        Description.GetComponent<Text>().enabled = false;
-        Level.GetComponent<Text>().enabled = false;
-        LevelText.GetComponent<Text>().enabled = false;
+        //mines123
     }
+
     public void OnMouseDown()
     {
-
-        
+        GameMaster.GetComponent<BaseUI>().BuildingInterface();
 
         if (tabOpen == false)
         {
-            tabOpen = true;
+            GameMaster.GetComponent<BaseUI>().buildingInterface = true;
             string tag = gameObject.tag;
             Level.GetComponent<Text>().enabled = true;
             Description.GetComponent<Text>().enabled = true;
@@ -215,7 +198,7 @@ public class BuildingInterface : MonoBehaviour
 
         } else
         {
-            tabOpen = false;
+            GameMaster.GetComponent<BaseUI>().buildingInterface = false;
             Description.GetComponent<Text>().enabled = false;
             Level.GetComponent<Text>().enabled = false;
             LevelText.GetComponent<Text>().enabled = false;
@@ -253,6 +236,43 @@ public class BuildingInterface : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(tabOpen + "tabopen");
+        tabOpen = GameMaster.GetComponent<BaseUI>().buildingInterface;
+        Debug.Log(tabOpen);
+    }
+
+    public void Close()
+    {
+        GameMaster.GetComponent<BaseUI>().buildingInterface = false;
+        Description.GetComponent<Text>().enabled = false;
+        Level.GetComponent<Text>().enabled = false;
+        LevelText.GetComponent<Text>().enabled = false;
+        House1Sprite.GetComponent<Image>().enabled = false;
+        House2Sprite.GetComponent<Image>().enabled = false;
+        //House3Sprite.GetComponent<Image>().enabled = false;
+        Barrack1Sprite.GetComponent<Image>().enabled = false;
+        Barrack2Sprite.GetComponent<Image>().enabled = false;
+        //Barrack3Sprite.GetComponent<Image>().enabled = false;
+        Farm1Sprite.GetComponent<Image>().enabled = false;
+        Farm2Sprite.GetComponent<Image>().enabled = false;
+        //Farm3Sprite.GetComponent<Image>().enabled = false;
+        Shop1Sprite.GetComponent<Image>().enabled = false;
+        Shop2Sprite.GetComponent<Image>().enabled = false;
+        //Shop3Sprite.GetComponent<Image>().enabled = false;
+        Library1Sprite.GetComponent<Image>().enabled = false;
+        //Library2Sprite.GetComponent<Image>().enabled = false;
+        //Library3Sprite.GetComponent<Image>().enabled = false;
+        Factory1Sprite.GetComponent<Image>().enabled = false;
+        //Factory2Sprite.GetComponent<Image>().enabled = false;
+        //Factory3Sprite.GetComponent<Image>().enabled = false;
+        //Mine1Sprite.GetComponent<Image>().enabled = false;
+        //Mine2Sprite.GetComponent<Image>().enabled = false;
+        //Mine3Sprite.GetComponent<Image>().enabled = false;
+
+        GameMaster.GetComponent<BaseUI>().tab.GetComponent<Image>().enabled = false;
+        GameMaster.GetComponent<BaseUI>().upgrade.GetComponent<Image>().enabled = false;
+        GameMaster.GetComponent<BaseUI>().demolish.GetComponent<Image>().enabled = false;
+        GameMaster.GetComponent<BaseUI>().line.GetComponent<Text>().enabled = false;
     }
 }
+
+    

@@ -27,6 +27,17 @@ public class BaseUI : MonoBehaviour
     public GameObject upgrade;
     public GameObject demolish;
 
+    GameObject House1Sprite;
+    GameObject House2Sprite;
+    GameObject Barrack1Sprite;
+    GameObject Barrack2Sprite;
+    GameObject Farm1Sprite;
+    GameObject Farm2Sprite;
+    GameObject Shop1Sprite;
+    GameObject Shop2Sprite;
+    GameObject Library1Sprite;
+    GameObject Factory1Sprite;
+
     private float timePercentageReduction;
 
     // Start is called before the first frame update
@@ -35,6 +46,36 @@ public class BaseUI : MonoBehaviour
         StatsButton();
         BuildButton();
         BuildingInterface();
+
+        House1Sprite = GameObject.FindGameObjectWithTag("House1tab");
+        House1Sprite.GetComponent<Image>().enabled = false;
+        House2Sprite = GameObject.FindGameObjectWithTag("House2tab");
+        House2Sprite.GetComponent<Image>().enabled = false;
+        //h3
+        Barrack1Sprite = GameObject.FindGameObjectWithTag("Barracks1tab");
+        Barrack1Sprite.GetComponent<Image>().enabled = false;
+        Barrack2Sprite = GameObject.FindGameObjectWithTag("Barracks2tab");
+        Barrack2Sprite.GetComponent<Image>().enabled = false;
+        //b3
+        Farm1Sprite = GameObject.FindGameObjectWithTag("Farm1tab");
+        Farm1Sprite.GetComponent<Image>().enabled = false;
+        Farm2Sprite = GameObject.FindGameObjectWithTag("Farm2tab");
+        Farm2Sprite.GetComponent<Image>().enabled = false;
+        //f3
+        Shop1Sprite = GameObject.FindGameObjectWithTag("Shop1tab");
+        Shop1Sprite.GetComponent<Image>().enabled = false;
+        Shop2Sprite = GameObject.FindGameObjectWithTag("Shop2tab");
+        Shop2Sprite.GetComponent<Image>().enabled = false;
+        //s3
+        Library1Sprite = GameObject.FindGameObjectWithTag("Library1tab");
+        Library1Sprite.GetComponent<Image>().enabled = false;
+        //l2
+        //l3
+        Factory1Sprite = GameObject.FindGameObjectWithTag("Factory1tab");
+        Factory1Sprite.GetComponent<Image>().enabled = false;
+        //f2
+        //f3
+        //mines123 // tabs need to be added too
     }
 
     // Update is called once per frame
@@ -53,7 +94,8 @@ public class BaseUI : MonoBehaviour
             // needs to change to percentage
             
         }
-
+        Debug.Log("stats: " + statsTab);
+        Debug.Log("build: " + buildTab);
     }
     public void CloseAll()
     {
@@ -63,11 +105,12 @@ public class BaseUI : MonoBehaviour
         StatsButton();
         buildTab = true;
         BuildButton();
+        gameObject.GetComponent<BuildingInterface>().Close();
     }
     public void StatsButton()
     {
         if (statsTab == false) {
-            if (buildTab == true)
+            if (buildTab || buildingInterface)
             {
                 CloseAll();
             }
@@ -95,7 +138,7 @@ public class BaseUI : MonoBehaviour
     {
         if (buildTab == false)
         {
-            if (statsTab == true)
+            if (statsTab || buildingInterface)
             {
                 CloseAll();
             }
@@ -152,5 +195,9 @@ public class BaseUI : MonoBehaviour
         upgrade.GetComponent<Image>().enabled = false;
         demolish.GetComponent<Image>().enabled = false;
 
+        if (statsTab || buildTab || upgradeTab)
+        {
+            CloseAll();
+        }
     }
 }
