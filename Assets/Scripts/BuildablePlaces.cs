@@ -34,4 +34,15 @@ public class BuildablePlaces : MonoBehaviour
             GameMaster.GetComponent<BaseBuilding>().InstantiatingBuilding(code, pos);
         }
     }
+    public void Revert()
+    {
+        var tempColor = gameObject.GetComponent<SpriteRenderer>().color;
+        tempColor.a = 1f;
+        gameObject.GetComponent<SpriteRenderer>().color = tempColor;
+        Debug.Log("yeet");
+
+        var tempSize = gameObject.GetComponent<BoxCollider2D>().size;
+        tempSize = new Vector3(32, 32);
+        gameObject.GetComponent<BoxCollider2D>().size = tempSize;
+    }
 }

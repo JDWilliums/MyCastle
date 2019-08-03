@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class BuildingInterface : MonoBehaviour
 {
+    private Quaternion rot = Quaternion.Euler(0, 0, 0);
+    private GameObject place;
+    private Transform pos;
+
     public GameObject GameMaster;
     public bool tabOpen;
 
@@ -22,6 +26,11 @@ public class BuildingInterface : MonoBehaviour
     GameObject Shop2Sprite;
     GameObject Library1Sprite;
     GameObject Factory1Sprite;
+
+    public int code;
+
+
+    public new string tag;
 
     public void Start()
     {
@@ -58,7 +67,8 @@ public class BuildingInterface : MonoBehaviour
         if (tabOpen == false)
         {
             GameMaster.GetComponent<BaseUI>().buildingInterface = true;
-            string tag = gameObject.tag;
+            tag = gameObject.tag;
+            GameMaster.GetComponent<BaseUI>().selected = gameObject;
             Level.GetComponent<Text>().enabled = true;
             Description.GetComponent<Text>().enabled = true;
             LevelText.GetComponent<Text>().enabled = true;
@@ -70,7 +80,7 @@ public class BuildingInterface : MonoBehaviour
             GameMaster.GetComponent<BaseUI>().line.GetComponent<Text>().enabled = false;
 
             if (tag == "House1")
-            {
+            {    
                 Level.GetComponent<Text>().text = "1";
                 Description.GetComponent<Text>().text = "Increases Army Capacity               5 / 10 / 20";
                 House1Sprite.GetComponent<Image>().enabled = true;
@@ -78,13 +88,13 @@ public class BuildingInterface : MonoBehaviour
             else if (tag == "House2")
             {
                 Level.GetComponent<Text>().text = "2";
-                Description.GetComponent<Text>().text = "Increases Army Capacity           5 / 10 / 20";
+                Description.GetComponent<Text>().text = "Increases Army Capacity               5 / 10 / 20";
                 House2Sprite.GetComponent<Image>().enabled = true;
             }
             else if (tag == "House3")
             {
                 Level.GetComponent<Text>().text = "3";
-                Description.GetComponent<Text>().text = "Increases Army Capacity           5 / 10 / 20";
+                Description.GetComponent<Text>().text = "Increases Army Capacity               5 / 10 / 20";
                 //House3Sprite
             }
             else if (tag == "Barracks1")
@@ -198,46 +208,15 @@ public class BuildingInterface : MonoBehaviour
 
         } else
         {
-            GameMaster.GetComponent<BaseUI>().buildingInterface = false;
-            Description.GetComponent<Text>().enabled = false;
-            Level.GetComponent<Text>().enabled = false;
-            LevelText.GetComponent<Text>().enabled = false;
-            House1Sprite.GetComponent<Image>().enabled = false;
-            House2Sprite.GetComponent<Image>().enabled = false;
-            //House3Sprite.GetComponent<Image>().enabled = false;
-            Barrack1Sprite.GetComponent<Image>().enabled = false;
-            Barrack2Sprite.GetComponent<Image>().enabled = false;
-            //Barrack3Sprite.GetComponent<Image>().enabled = false;
-            Farm1Sprite.GetComponent<Image>().enabled = false;
-            Farm2Sprite.GetComponent<Image>().enabled = false;
-            //Farm3Sprite.GetComponent<Image>().enabled = false;
-            Shop1Sprite.GetComponent<Image>().enabled = false;
-            Shop2Sprite.GetComponent<Image>().enabled = false;
-            //Shop3Sprite.GetComponent<Image>().enabled = false;
-            Library1Sprite.GetComponent<Image>().enabled = false;
-            //Library2Sprite.GetComponent<Image>().enabled = false;
-            //Library3Sprite.GetComponent<Image>().enabled = false;
-            Factory1Sprite.GetComponent<Image>().enabled = false;
-            //Factory2Sprite.GetComponent<Image>().enabled = false;
-            //Factory3Sprite.GetComponent<Image>().enabled = false;
-            //Mine1Sprite.GetComponent<Image>().enabled = false;
-            //Mine2Sprite.GetComponent<Image>().enabled = false;
-            //Mine3Sprite.GetComponent<Image>().enabled = false;
-
-            //GameMaster.GetComponent<BaseUI>().buildingInterface = true;
-            //GameMaster.GetComponent<BaseUI>().BuildingInterface();
-
-            GameMaster.GetComponent<BaseUI>().tab.GetComponent<Image>().enabled = false;
-            GameMaster.GetComponent<BaseUI>().upgrade.GetComponent<Image>().enabled = false;
-            GameMaster.GetComponent<BaseUI>().demolish.GetComponent<Image>().enabled = false;
-            GameMaster.GetComponent<BaseUI>().line.GetComponent<Text>().enabled = false;
+            Close();
         }
 
     }
     private void Update()
     {
         tabOpen = GameMaster.GetComponent<BaseUI>().buildingInterface;
-        Debug.Log(tabOpen);
+       // Debug.Log(code);
+        //Debug.Log(place);
     }
 
     public void Close()
@@ -272,6 +251,62 @@ public class BuildingInterface : MonoBehaviour
         GameMaster.GetComponent<BaseUI>().upgrade.GetComponent<Image>().enabled = false;
         GameMaster.GetComponent<BaseUI>().demolish.GetComponent<Image>().enabled = false;
         GameMaster.GetComponent<BaseUI>().line.GetComponent<Text>().enabled = false;
+
+    }
+
+    public void Upgrade()
+    {
+        if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("House1"))
+        {
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().House2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Destroy(GameMaster.GetComponent<BaseUI>().selected);
+            GameMaster.GetComponent<PlayerAccount>().house1--;
+            GameMaster.GetComponent<PlayerAccount>().house2++;
+            OnMouseDown();
+        }
+        if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("Farm1"))
+        {
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().Farm2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Destroy(GameMaster.GetComponent<BaseUI>().selected);
+            GameMaster.GetComponent<PlayerAccount>().farm1--;
+            GameMaster.GetComponent<PlayerAccount>().farm2++;
+            OnMouseDown();
+        }
+        if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("Barracks1"))
+        {
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().Barracks2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Destroy(GameMaster.GetComponent<BaseUI>().selected);
+            GameMaster.GetComponent<PlayerAccount>().barracks1--;
+            GameMaster.GetComponent<PlayerAccount>().barracks2++;
+            OnMouseDown();
+        }
+        if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("Shop1"))
+        {
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().Shop2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Destroy(GameMaster.GetComponent<BaseUI>().selected);
+            GameMaster.GetComponent<PlayerAccount>().shop1--;
+            GameMaster.GetComponent<PlayerAccount>().shop2++;
+            OnMouseDown();
+        }
+    }
+
+    public void Demolish()
+    {
+        code = GameMaster.GetComponent<BaseBuilding>().placeCode1; //absolute spaghetti
+        place = GameObject.Find("Positions");
+        Debug.Log(code.ToString());
+        
+        foreach (Transform child in place.transform)
+        {
+
+            if (code.ToString() == child.name)
+            {
+                Debug.Log("yeet1");
+                child.GetComponent<BuildablePlaces>().Revert();
+            }           
+        }
+
+        Destroy(GameMaster.GetComponent<BaseUI>().selected);
     }
 }
 

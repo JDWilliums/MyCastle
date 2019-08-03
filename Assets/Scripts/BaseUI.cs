@@ -18,6 +18,8 @@ public class BaseUI : MonoBehaviour
     private bool upgradeTab = false;
     public bool buildingInterface = true;
 
+    public GameObject selected;
+
     public GameObject tab;
     public GameObject stats;
     public GameObject build;
@@ -94,8 +96,6 @@ public class BaseUI : MonoBehaviour
             // needs to change to percentage
             
         }
-        Debug.Log("stats: " + statsTab);
-        Debug.Log("build: " + buildTab);
     }
     public void CloseAll()
     {

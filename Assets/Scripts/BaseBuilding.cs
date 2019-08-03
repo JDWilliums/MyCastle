@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseBuilding : MonoBehaviour
 {
     public int castleStage = 1;
+    public int placeCode1;
 
     private Quaternion rot = Quaternion.Euler(0, 0, 0);
 
@@ -23,6 +24,13 @@ public class BaseBuilding : MonoBehaviour
     public GameObject Shop;
     public GameObject Factory;
 
+    public GameObject House2;
+    public GameObject Farm2;
+    public GameObject Barracks2;
+    public GameObject Library2;
+    public GameObject Shop2;
+    public GameObject Factory2;
+
     public int selected = 0;
 
     public void SelectedBuilding(int code)
@@ -32,30 +40,31 @@ public class BaseBuilding : MonoBehaviour
 
     public void InstantiatingBuilding(int placeCode, Vector3 pos)
     {
+        placeCode1 = placeCode;
         pos = pos + new Vector3 (0, 0, -1); //this just sets it in front of background
         if (selected == 1)
         {
-            Instantiate(House, pos, rot);
+            Instantiate(House, pos, rot).GetComponent<BuildingInterface>().code = placeCode;
             gameObject.GetComponent<PlayerAccount>().house1++;
         } else if (selected == 2)
         {
-            Instantiate(Barracks, pos, rot);
+            Instantiate(Barracks, pos, rot).GetComponent<BuildingInterface>().code = placeCode;
             gameObject.GetComponent<PlayerAccount>().barracks1++;
         } else if (selected == 3)
         {
-            Instantiate(Farm, pos, rot);
+            Instantiate(Farm, pos, rot).GetComponent<BuildingInterface>().code = placeCode;
             gameObject.GetComponent<PlayerAccount>().farm1++;
         } else if (selected == 4)
         {
-            Instantiate(Shop, pos, rot);
+            Instantiate(Shop, pos, rot).GetComponent<BuildingInterface>().code = placeCode;
             gameObject.GetComponent<PlayerAccount>().shop1++;
         } else if (selected == 5)
         {
-            Instantiate(Library, pos, rot);
+            Instantiate(Library, pos, rot).GetComponent<BuildingInterface>().code = placeCode;
             gameObject.GetComponent<PlayerAccount>().library1++;
         } else if (selected == 6)
         {
-            Instantiate(Factory, pos, rot);
+            Instantiate(Factory, pos, rot).GetComponent<BuildingInterface>().code = placeCode;
             gameObject.GetComponent<PlayerAccount>().factory1++;
         }
     }

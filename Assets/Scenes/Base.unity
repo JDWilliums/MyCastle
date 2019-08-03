@@ -228,6 +228,7 @@ MonoBehaviour:
   statsEPS: {fileID: 1510590113}
   statsACount: {fileID: 1347756227}
   buildingInterface: 1
+  selected: {fileID: 0}
   tab: {fileID: 1812973583}
   stats: {fileID: 343165712}
   build: {fileID: 2092270719}
@@ -256,6 +257,13 @@ MonoBehaviour:
   Library: {fileID: 3680659852773361160, guid: fc760483940add54b8ef87093678ac46, type: 3}
   Shop: {fileID: 7580978356796496274, guid: d266401d7d71e75448d41abb79c9f2ae, type: 3}
   Factory: {fileID: 1557599053515276839, guid: 34d21f081ae0574428a0f79aae02a504, type: 3}
+  House2: {fileID: 2359586540961377750, guid: 443fb356dbfd9394a89606360ce92942, type: 3}
+  Farm2: {fileID: 6180387297296007595, guid: 53fd79157c7baf64cb806da3660d9605, type: 3}
+  Barracks2: {fileID: 4194770974395598998, guid: fa187ef3c377c724d99f783195452de8,
+    type: 3}
+  Library2: {fileID: 0}
+  Shop2: {fileID: 6807129348120731252, guid: 6af2e10ef336bc849b42aa21ea960aef, type: 3}
+  Factory2: {fileID: 0}
   selected: 0
 --- !u!114 &1078983
 MonoBehaviour:
@@ -271,6 +279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameMaster: {fileID: 0}
   tabOpen: 0
+  code: 0
+  tag: 
 --- !u!1 &25952069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,7 +2798,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 502109284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1078983}
+        m_MethodName: Demolish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &502109284
@@ -4046,7 +4067,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 772314030}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1078983}
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &772314030
