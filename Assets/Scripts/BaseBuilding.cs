@@ -5,7 +5,6 @@ using UnityEngine;
 public class BaseBuilding : MonoBehaviour
 {
     public int castleStage = 1;
-    public int placeCode1;
 
     private Quaternion rot = Quaternion.Euler(0, 0, 0);
 
@@ -40,7 +39,6 @@ public class BaseBuilding : MonoBehaviour
 
     public void InstantiatingBuilding(int placeCode, Vector3 pos)
     {
-        placeCode1 = placeCode;
         pos = pos + new Vector3 (0, 0, -1); //this just sets it in front of background
         if (selected == 1)
         {

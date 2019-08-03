@@ -63,6 +63,7 @@ public class BuildingInterface : MonoBehaviour
     public void OnMouseDown()
     {
         GameMaster.GetComponent<BaseUI>().BuildingInterface();
+        GameMaster.GetComponent<BuildingInterface>().code = code;  //Moving code place from individual building to gamemaster so, can be used to manipulate the buildable places
 
         if (tabOpen == false)
         {
@@ -258,7 +259,7 @@ public class BuildingInterface : MonoBehaviour
     {
         if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("House1"))
         {
-            Instantiate(GameMaster.GetComponent<BaseBuilding>().House2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().House2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot).GetComponent<BuildingInterface>().code = GameMaster.GetComponent<BaseUI>().selected.GetComponent<BuildingInterface>().code;
             Destroy(GameMaster.GetComponent<BaseUI>().selected);
             GameMaster.GetComponent<PlayerAccount>().house1--;
             GameMaster.GetComponent<PlayerAccount>().house2++;
@@ -266,7 +267,7 @@ public class BuildingInterface : MonoBehaviour
         }
         if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("Farm1"))
         {
-            Instantiate(GameMaster.GetComponent<BaseBuilding>().Farm2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().Farm2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot).GetComponent<BuildingInterface>().code = GameMaster.GetComponent<BaseUI>().selected.GetComponent<BuildingInterface>().code;
             Destroy(GameMaster.GetComponent<BaseUI>().selected);
             GameMaster.GetComponent<PlayerAccount>().farm1--;
             GameMaster.GetComponent<PlayerAccount>().farm2++;
@@ -274,7 +275,7 @@ public class BuildingInterface : MonoBehaviour
         }
         if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("Barracks1"))
         {
-            Instantiate(GameMaster.GetComponent<BaseBuilding>().Barracks2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().Barracks2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot).GetComponent<BuildingInterface>().code = GameMaster.GetComponent<BaseUI>().selected.GetComponent<BuildingInterface>().code;
             Destroy(GameMaster.GetComponent<BaseUI>().selected);
             GameMaster.GetComponent<PlayerAccount>().barracks1--;
             GameMaster.GetComponent<PlayerAccount>().barracks2++;
@@ -282,7 +283,7 @@ public class BuildingInterface : MonoBehaviour
         }
         if (GameMaster.GetComponent<BaseUI>().selected.CompareTag("Shop1"))
         {
-            Instantiate(GameMaster.GetComponent<BaseBuilding>().Shop2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot);
+            Instantiate(GameMaster.GetComponent<BaseBuilding>().Shop2, GameMaster.GetComponent<BaseUI>().selected.transform.position, rot).GetComponent<BuildingInterface>().code = GameMaster.GetComponent<BaseUI>().selected.GetComponent<BuildingInterface>().code;
             Destroy(GameMaster.GetComponent<BaseUI>().selected);
             GameMaster.GetComponent<PlayerAccount>().shop1--;
             GameMaster.GetComponent<PlayerAccount>().shop2++;
@@ -292,7 +293,6 @@ public class BuildingInterface : MonoBehaviour
 
     public void Demolish()
     {
-        code = GameMaster.GetComponent<BaseBuilding>().placeCode1; //absolute spaghetti
         place = GameObject.Find("Positions");
         Debug.Log(code.ToString());
         
